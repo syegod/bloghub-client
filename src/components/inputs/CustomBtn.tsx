@@ -10,9 +10,10 @@ interface CustomBtnProps {
     type?: "submit" | "reset" | "button" | undefined,
     disabled?: boolean;
     fullRounded?: boolean;
+    containerStyles?: string;
 }
 
-const CustomBtn = ({ text, onClick, fullWidth, danger, secondary, disabled, type, fullRounded }: CustomBtnProps) => {
+const CustomBtn = ({ text, onClick, fullWidth, danger, secondary, disabled, type, fullRounded, containerStyles }: CustomBtnProps) => {
     function handleOnClick(){
         if(onClick){
             onClick();
@@ -24,7 +25,8 @@ const CustomBtn = ({ text, onClick, fullWidth, danger, secondary, disabled, type
         secondary && `bg-gray-500`, 
         fullWidth ? `w-full` : `w-max`, 
         danger && `bg-rose-500`,
-        disabled && `opacity-50 cursor-not-allowed`)} type={type} disabled={disabled}>{text}</button>
+        disabled && `opacity-50 cursor-not-allowed`,
+        containerStyles && containerStyles)} type={type} disabled={disabled}>{text}</button>
     )
 }
 

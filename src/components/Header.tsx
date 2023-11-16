@@ -10,8 +10,8 @@ export default function Header() {
         <>
             <header className="py-3 w-full bg-white opacity-90 dark:bg-gray-800 h-16 fixed top-0 
             left-0 border-b z-10">
-                <div className="px-1 md:container xl:px-[7%] mx-auto">
-                    <nav className="flex flex-row justify-between items-center">
+                <div className="px-1 md:container xl:px-[7%] mx-auto h-full">
+                    <nav className="flex flex-row justify-between items-center h-full">
                         <Link className="font-bold text-xl" to={'/'}>BlogHub</Link>
                         <UserHeadLinks setIsModalOpen={setIsModalOpen} />
                     </nav>

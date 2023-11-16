@@ -14,7 +14,7 @@ const UserHeadLinks = ({ setIsModalOpen }: UserHeadLinksProps) => {
         )
     } else {
         return (
-            <button className="rounded-full px-3 py-1 bg-purple-600 text-white font-semibold hover:bg-purple-500 transition select-none" onClick={() => setIsModalOpen(true)}>Sign in</button>
+            <button className="rounded-full px-3 py-1 bg-gray-900 text-white font-semibold hover:bg-gray-700 transition select-none" onClick={() => setIsModalOpen(true)}>Sign in</button>
         )
     }
 }

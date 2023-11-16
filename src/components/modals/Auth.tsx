@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import CustomBtn from '../inputs/CustomBtn'
-import { BsGoogle, BsGithub, BsTwitter } from 'react-icons/bs'
+import { BsGoogle, BsGithub } from 'react-icons/bs'
+import { FaXTwitter } from "react-icons/fa6";
 import AuthSocialButton from '../inputs/AuthSocialButton';
 import CustomInput from '../inputs/CustomInput';
 import axios from '../../axios'
@@ -73,7 +74,7 @@ const Auth = () => {
             <div className='flex flex-row gap-2 justify-between'>
                 <AuthSocialButton icon={BsGithub} onClick={() => { }} />
                 <AuthSocialButton icon={BsGoogle} onClick={() => { }} />
-                <AuthSocialButton icon={BsTwitter} onClick={() => { }} />
+                <AuthSocialButton icon={FaXTwitter} onClick={() => { }} />
             </div>
         </form>
     )

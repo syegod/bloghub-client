@@ -8,6 +8,7 @@ interface AuthContextProps{
 }
 
 interface UserData{
+    _id:string;
     username: string;
     email: string;
     emailConfirmed: boolean;

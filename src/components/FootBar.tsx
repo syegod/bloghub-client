@@ -5,7 +5,7 @@ import {IoNotificationsOutline, IoNotifications, IoMailOutline, IoMailSharp} fro
 
 const FootBar = () => {
   return (
-    <div className='fixed bottom-0 left-0 block sm:hidden w-full h-10 border-t-2'>
+    <div className='fixed bottom-0 left-0 block sm:hidden w-full h-10 border-t-2 bg-white z-20'>
         <div className='flex justify-between items-center h-full w-full px-5'>
             <GoHome size={23}/>
             <GoSearch size={23}/>
