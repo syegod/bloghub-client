@@ -1,16 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import UserAvatar from '../user/UserAvatar';
 import CustomTextArea from '../inputs/CustomTextArea';
-import { AuthContext } from '../../context';
+import { AuthContext } from '../../contexts/AuthContext';
 import { MdGif, MdOutlineEmojiEmotions } from "react-icons/md";
 import { CiImageOn } from "react-icons/ci";
 import CustomBtn from '../inputs/CustomBtn';
 import axios from '../../axios';
 import dataURLtoFile from '../../handlers/dataURLToFile';
 import ImgPreview from './ImgPreview';
+import { usePostsContext } from '../../contexts/PostContext';
+import { IPost } from '../../types';
 
-const MakePost = ({addPost}:{addPost: (post:any)=>void}) => {
+const MakePost = () => {
     const { userData, isAuth } = useContext(AuthContext);
+    const {updateValue, posts} = usePostsContext();
     const formData = new FormData();
     const [image, setImage] = useState<any>(null);
     const [imageName, setImageName] = useState<string | null>(null);
@@ -27,18 +30,23 @@ const MakePost = ({addPost}:{addPost: (post:any)=>void}) => {
             }
             formData.append('text', text);
             const response = await axios.post('/posts', formData);
-            console.log(response);
             if(response.status === 201){
-                addPost(response.data);
+                const newPost:IPost = response.data.newPost;
+                console.log(newPost);
+                newPost.author = userData;
+                updateValue([newPost, ...posts]);
             }
         } catch (err) {
             console.log(err);
         } finally {
             setLoading(false);
-            console.log(formData);
             e.target.reset();
         }
     }
+
+    useEffect(()=> {
+        console.log(posts);
+    }, [posts]);
 
     async function handleImg(e: any) {
         const file = e.target?.files[0];

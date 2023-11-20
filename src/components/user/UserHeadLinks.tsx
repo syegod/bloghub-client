@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AuthContext } from '../../context';
+import { AuthContext } from '../../contexts/AuthContext';
 import UserAvatar from './UserAvatar';
 import { UserHeadLinksProps } from '../../types';
 

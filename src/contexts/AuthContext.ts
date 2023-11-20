@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { AuthContextProps, PostsContextProps } from "./types";
+import { AuthContextProps, PostsContextProps } from "../types";
 
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -9,7 +9,3 @@ export const AuthContext = createContext<AuthContextProps>({
     state: 'loading'
 });
 
-export const PostsContext = createContext<PostsContextProps>({
-    posts: null,
-    state: 'loading'
-});

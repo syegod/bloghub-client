@@ -8,17 +8,14 @@ import { BiRepost } from "react-icons/bi";
 import useTime from '../../hooks/useTime';
 import axios from '../../axios';
 import handleNumber from '../../handlers/handleNumber';
-import { AuthContext } from '../../context';
+import { AuthContext } from '../../contexts/AuthContext';
 import PostMenu from '../btns/PostMenu';
 import { IPost, PostCardProps } from '../../types';
-
-
-
-
-
+import { usePostsContext } from '../../contexts/PostContext';
 
 const PostCard = ({ post, deletePost }: PostCardProps) => {
   const { isAuth, userData } = useContext(AuthContext);
+  const {posts, updateValue} = usePostsContext();
   const [initialPost, setInitialPost] = useState<IPost>(post);
   const { author, text, createdAt, likes, views, comments, reposts, image } = initialPost;
   const { avatarUrl, username, _id } = author;
@@ -34,6 +31,7 @@ const PostCard = ({ post, deletePost }: PostCardProps) => {
         }
       });
       if (response.status === 200) {
+        updateValue(posts.filter((post:IPost) => post._id != initialPost._id));
       }
     } catch (err) {
       console.log(err);

@@ -2,20 +2,22 @@ import PostCard from "./PostCard"
 import { test_posts } from "../../constants"
 import axios from "../../axios";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context";
+import { AuthContext } from "../../contexts/AuthContext";
 import MakePost from "./MakePost"
 import { ImSpinner10 } from "react-icons/im";
+import { usePostsContext } from "../../contexts/PostContext";
+import { IPost } from "../../types";
 
 const Feed = () => {
     const [loading, setLoading] = useState(false);
+    const {updateValue, posts} = usePostsContext();
     const { userData } = useContext(AuthContext);
-    const [posts, setPosts] = useState<any>([]);
     async function getPosts() {
         try {
             setLoading(true);
             const response = await axios.get('/posts');
             if (response.status === 200) {
-                setPosts(response.data);
+                updateValue(response.data);
             }
         } catch (err) {
             console.log(err);
@@ -24,27 +26,17 @@ const Feed = () => {
         }
     }
 
-    function addPost(post: any) {
-        setPosts((prev:[]) => [...prev, post]);
-    }
-
-    function editPost(post: any) {
-
-    }
-
-    // function deletePost(id: string) {
-    //     setPosts((prevPosts:[]) => prevPosts.filter((e: any) => e._id !== id));
-    // }
 
     useEffect(() => {
         getPosts();
+        console.log(posts);
     }, []);
 
     return (
         <div className="flex flex-col w-full">
-            <MakePost addPost={addPost}/>
-            {posts.length > 0 && posts.map((e: any, i: number) => (
-                <PostCard deletePost={() => console.log('1')} key={i} post={e} />
+            <MakePost />
+            {posts!.length > 0 && posts?.map((e: any, i: number) => (
+                <PostCard deletePost={() => console.log('1')} key={e._id} post={e} />
             ))}
             {loading &&
                 <div className="w-full h-[50vh] flex items-center justify-center">

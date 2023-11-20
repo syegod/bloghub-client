@@ -2,11 +2,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from './pages/mainpage'
 import Layout from "./components/Layout";
 import { useEffect, useState } from "react";
-import { AuthContext } from "./context";
+import { AuthContext } from "./contexts/AuthContext";
 import axios from "./axios";
 import AddPost from "./pages/addpost";
 import NotFound from "./pages/notfound";
 import Explore from "./pages/explore";
+import PostsContextProvider from "./contexts/PostContext";
 
 function App() {
   const [udata, setUData] = useState(null);
@@ -34,16 +35,18 @@ function App() {
     <AuthContext.Provider value={{
       userData: udata, token, isAuth, state: loading ? 'loading' : 'loaded'
     }}>
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/" index element={<MainPage />} />
-            <Route path="/explore" element={<Explore />} />
-            {/* <Route path="/add-post" element={<AddPost />} /> */}
-          </Routes>
-        </Layout>
-      </BrowserRouter>
+      <PostsContextProvider>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="*" element={<NotFound />} />
+              <Route path="/" index element={<MainPage />} />
+              <Route path="/explore" element={<Explore />} />
+              {/* <Route path="/add-post" element={<AddPost />} /> */}
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </PostsContextProvider>
     </AuthContext.Provider>
   );
 }

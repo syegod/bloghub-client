@@ -8,8 +8,8 @@ export interface AuthContextProps {
 }
 
 export interface PostsContextProps{
-    posts: IPost[] | null;
-    state: string;
+    posts: IPost[];
+    updateValue: (param:any)=>void;
 }
 
 export interface IUser {
