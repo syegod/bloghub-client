@@ -1,12 +1,8 @@
 import clsx from 'clsx';
 import { PiUserCircleLight } from 'react-icons/pi'
+import { UserAvatarProps } from '../../types';
 
-interface UserAvatarProps {
-    src?: string;
-    size: 'large' | 'medium' | 'small';
-    activeStatus?: boolean;
 
-}
 
 const UserAvatar = ({ src, size, activeStatus }: UserAvatarProps) => {
     return (

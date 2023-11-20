@@ -1,17 +1,8 @@
 import clsx from 'clsx';
 import React from 'react'
+import { CustomBtnProps } from '../../types';
 
-interface CustomBtnProps {
-    text: string;
-    onClick?: () => void;
-    fullWidth?: boolean;
-    danger?: boolean;
-    secondary?: boolean;
-    type?: "submit" | "reset" | "button" | undefined,
-    disabled?: boolean;
-    fullRounded?: boolean;
-    containerStyles?: string;
-}
+
 
 const CustomBtn = ({ text, onClick, fullWidth, danger, secondary, disabled, type, fullRounded, containerStyles }: CustomBtnProps) => {
     function handleOnClick(){

@@ -9,7 +9,7 @@ import axios from '../../axios';
 import dataURLtoFile from '../../handlers/dataURLToFile';
 import ImgPreview from './ImgPreview';
 
-const MakePost = () => {
+const MakePost = ({addPost}:{addPost: (post:any)=>void}) => {
     const { userData, isAuth } = useContext(AuthContext);
     const formData = new FormData();
     const [image, setImage] = useState<any>(null);
@@ -21,17 +21,22 @@ const MakePost = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            formData.append('image', dataURLtoFile(image, imageName));
+            if (image && imageName) {
+                formData.append('image', dataURLtoFile(image, imageName));
+                formData.append('file_name', imageName!);
+            }
             formData.append('text', text);
-            formData.append('file_name', imageName!);
             const response = await axios.post('/posts', formData);
             console.log(response);
-            e.target.reset();
+            if(response.status === 201){
+                addPost(response.data);
+            }
         } catch (err) {
             console.log(err);
         } finally {
             setLoading(false);
             console.log(formData);
+            e.target.reset();
         }
     }
 
@@ -48,7 +53,7 @@ const MakePost = () => {
     }
 
     async function handleRemoveImg() {
-        const fileInput:any = document.getElementById('imgs');
+        const fileInput: any = document.getElementById('imgs');
         setImage(null);
         setImageName(null);
         fileInput.value = '';
@@ -65,7 +70,7 @@ const MakePost = () => {
                     <div className='flex flex-col gap-3 items-start w-full'>
                         <CustomTextArea disabled={loading} id='post_text' maxLength={300}
                             placeholder="What's happening?" onChange={setText} />
-                        {image && <ImgPreview image={image} handleRemove={handleRemoveImg}/>}
+                        {image && <ImgPreview image={image} handleRemove={handleRemoveImg} />}
                         <div className='flex flex-row justify-between w-full gap-3'>
                             <div className='flex flex-row gap-2 items-center'>
                                 <CiImageOn size={30} className='cursor-pointer p-1 hover:bg-gray-200 rounded-xl transition' onClick={() => { document.getElementById('imgs')?.click() }} />

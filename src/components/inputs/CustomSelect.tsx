@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
 import CustomInput from './CustomInput';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md'
+import { CustomSelectProps } from '../../types';
 
-interface CustomSelectProps {
-    items: Object[];
-    Element: React.ElementType;
-    id: string;
-    placeholder?: string;
-}
+
 
 const CustomSelect = ({ items, Element, id, placeholder }: CustomSelectProps) => {
     const [isOpen, setIsOpen] = useState(false);

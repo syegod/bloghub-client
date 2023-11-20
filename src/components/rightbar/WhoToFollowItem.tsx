@@ -1,11 +1,8 @@
+import { WhoToFollowItemProps } from '../../types';
 import CustomBtn from '../inputs/CustomBtn';
 import UserAvatar from '../user/UserAvatar'
 
-interface WhoToFollowItemProps {
-    username: string;
-    userAvatar?: string;
-    userEmail?: string;
-}
+
 
 const WhoToFollowItem = ({ username, userAvatar, userEmail }: WhoToFollowItemProps) => {
     return (

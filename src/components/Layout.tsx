@@ -3,10 +3,9 @@ import Header from "./Header"
 import SideBar from "./sidebar/SideBar"
 import FootBar from "./FootBar"
 import RightBar from "./rightbar/RightBar"
+import { LayoutProps } from "../types"
 
-interface LayoutProps {
-    children?: ReactNode
-}
+
 
 export default function Layout({ children }: LayoutProps) {
     return (

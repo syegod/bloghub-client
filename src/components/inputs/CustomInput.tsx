@@ -1,16 +1,8 @@
 import clsx from 'clsx';
 import React from 'react'
+import { CustomInputProps } from '../../types';
 
-interface CustomInputProps {
-    label?: string;
-    type: string;
-    id: string;
-    disabled?: boolean;
-    onChange?: (value?: any) => void;
-    placeholder?: string;
-    autoComplete?: boolean;
-    ref?: React.MutableRefObject<null>;
-}
+
 
 const CustomInput = ({ label, onChange, disabled, id, type, placeholder, autoComplete }: CustomInputProps) => {
 

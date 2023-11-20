@@ -6,6 +6,7 @@ import { AuthContext } from "./context";
 import axios from "./axios";
 import AddPost from "./pages/addpost";
 import NotFound from "./pages/notfound";
+import Explore from "./pages/explore";
 
 function App() {
   const [udata, setUData] = useState(null);
@@ -36,8 +37,9 @@ function App() {
       <BrowserRouter>
         <Layout>
           <Routes>
-            <Route path="/" index element={<MainPage />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/" index element={<MainPage />} />
+            <Route path="/explore" element={<Explore />} />
             {/* <Route path="/add-post" element={<AddPost />} /> */}
           </Routes>
         </Layout>

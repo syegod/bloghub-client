@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../context';
 import UserAvatar from './UserAvatar';
+import { UserHeadLinksProps } from '../../types';
 
-interface UserHeadLinksProps {
-    setIsModalOpen: (state: boolean) => void;
-}
+
 
 const UserHeadLinks = ({ setIsModalOpen }: UserHeadLinksProps) => {
     const { isAuth, state, userData } = useContext(AuthContext);

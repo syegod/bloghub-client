@@ -1,9 +1,7 @@
 import { IconType } from "react-icons"
+import { AuthSocialButtonProps } from "../../types"
 
-interface AuthSocialButtonProps{
-    icon: IconType;
-    onClick: () => void;
-}
+
 
 const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({
     icon: Icon,

@@ -1,10 +1,7 @@
 import React from 'react'
+import { ModalProps } from '../../types'
 
-interface ModalProps {
-    children?: React.ReactNode;
-    isOpen?: boolean;
-    changeState: (state: boolean) => void;
-}
+
 
 
 const Modal = ({ children, isOpen, changeState }: ModalProps) => {

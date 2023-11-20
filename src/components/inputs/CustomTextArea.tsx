@@ -1,19 +1,9 @@
 import clsx from 'clsx';
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
+import { CustomTextAreaProps } from '../../types';
 
 
-interface CustomTextAreaProps {
-    size?: number;
-    disabled?: boolean;
-    onChange?: (e: any) => void;
-    textStyles?: string;
-    maxLength?: number;
-    placeholder?: string;
-    id?: string;
-    styles?: string;
-    border?: boolean;
-}
 
 const CustomTextArea = ({ size, disabled, border, onChange, maxLength, placeholder, textStyles, id, styles }: CustomTextAreaProps) => {
     const [rows, setRows] = useState(1);

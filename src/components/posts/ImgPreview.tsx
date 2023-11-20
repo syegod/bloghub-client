@@ -1,10 +1,8 @@
 import React from 'react'
 import { IoClose } from 'react-icons/io5';
+import { ImgPreviewProps } from '../../types';
 
-interface ImgPreviewProps{
-    image: string | ArrayBuffer | any;
-    handleRemove: () => void;
-}
+
 
 const ImgPreview = ({image, handleRemove}:ImgPreviewProps) => {
   return (

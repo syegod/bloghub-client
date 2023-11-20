@@ -1,14 +1,9 @@
 import React from 'react'
 import { IconType } from 'react-icons/lib'
 import { Link } from 'react-router-dom';
+import { SideBarItemProps } from '../../types';
 
-interface SideBarItemProps{
-    Icon: IconType;
-    IconActive: IconType;
-    text: string;
-    href: string;
-    active?: boolean;
-}
+
 
 const SideBarItem = ({Icon, text, href, active, IconActive}: SideBarItemProps) => {
     return (

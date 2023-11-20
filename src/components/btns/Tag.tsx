@@ -1,11 +1,8 @@
 import React from 'react'
 import clsx from 'clsx';
+import { TagProps } from '../../types';
 
-interface TagProps {
-    children?: string;
-    onClick?: () => void;
-    selected?: boolean;
-}
+
 
 const Tag = ({ children, onClick, selected }: TagProps) => {
     function handleOnClick() {
